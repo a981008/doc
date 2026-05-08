@@ -856,10 +856,10 @@ agent.chat("what was the gross sales of our company in the fiscal year?")
 
 ```mermaid
 graph TD
-    A(新消息到达 📩) --> B(创建嵌入 (embedding)  🔢)
+    A(新消息到达 📩) --> B("创建嵌入 (embedding)  🔢")
     A --> C(将消息存为文档 📂)
     B --> D(搜索向量数据库 🔍)
-    C --> E(创建并存储嵌入 (embedding) )
+    C --> E("创建并存储嵌入 (embedding)" )
     D --> F(查找 Top-K 相关文档 📚)
     F --> G(将检索到的文档注入上下文 🧠)
     G --> H(生成回复 💬)
