@@ -18,7 +18,7 @@
 | **Retrieval Based (基于检索)**                            | 高级     | 提供高度相关的上下文 | 实现过程复杂       |
 | **Memory Augmented Transformer (记忆增强的 Transformer)** | 高级     | 保留关键事实         | 额外的调用成本昂贵 |
 | **Hierarchical (分层)**                                   | 高级     | 混合多种记忆类型     | 管理复杂           |
-| **Graph Based (图谱)**                                    | 高级     | 理解实体间的关系     | 数据填充困难       |
+| **Graph Based (基于图)**                                    | 高级     | 理解实体间的关系     | 数据填充困难       |
 | **Compression & Consolidation (压缩)**                    | 中级     | Token 利用率极高     | 会丢失细微差别     |
 | **OS-Like Memory Management(类操作系统记忆管理)**         | 高级     | 具有无限的记忆潜力   | 概念上非常复杂     |
 
