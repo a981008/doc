@@ -1,6 +1,7 @@
 # AI Agent 记忆优化
 
 > 原文：[Optimizing Memory of AI Agents](https://github.com/FareedKhan-dev/optimize-ai-agent-memory/blob/main/README.md)
+> Jupyter Notebook：[ai-agent-memory-optimization.ipynb](../lab/ai-agent-memory-optimization.ipynb)
 
 优化 AI agent 的方法之一是通过多子 agent 架构来提高准确性。然而，在对话式 AI 中，优化不止于此——记忆变得更为关键。
 
@@ -1296,7 +1297,7 @@ graph LR
 
 *Hierarchical Optimization (Created by Fareed Khan)*
 
-这对于回答需要推理的复杂查询非常强大。为此，我们可以使用 LLM 本身作为工具从文本中提取结构化的 **[主语, 关系, 宾语] ([Subject, Relation, Object])** 三元组。我们将使用 `networkx` 库来构建图。
+这对于回答需要推理的复杂查询非常强大。为此，我们可以使用 LLM 本身作为工具从文本中提取结构化的 **(主语, 关系, 宾语)**（ **(Subject, Relation, Object)** ） 三元组。我们将使用 `networkx` 库来构建图。
 
 ```python
 import networkx as nx
