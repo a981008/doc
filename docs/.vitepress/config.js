@@ -21,6 +21,7 @@ export default withMermaid(defineConfig({
   description: '翻译 AI / Agent 相关技术文章',
   base: '/doc/',
   cleanUrls: true,
+  ignoreDeadLinks: true,
   mermaid: {
     theme: 'default'
   },
