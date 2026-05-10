@@ -30,9 +30,9 @@
 
 现代操作系统（OS）使用组合段页内存管理来平衡逻辑结构与高效物理利用。Multics 等经典方法将内存组织成划分为页面的段，支持高效的管理、保护和共享。段元数据（大小、访问权限）防止外部碎片化，而分页减少了内部碎片化。高级 OS 使用基于优先级的驱逐策略（如 LRU、工作集模型）来维护热数据，Zheng 等人表明将粗粒度分段与细粒度分页相结合可减少多核处理器的开销。
 
-![图 1：MemoryOS 的整体架构，包括记忆存储（Store）、更新（Updating）、检索（Retrieval）和响应（Response）。](.images/memory-os-ai-agent/image_1.png)
-
 *图 1：MemoryOS 的整体架构，包括记忆存储（Store）、更新（Updating）、检索（Retrieval）和响应（Response）。*
+
+![图 1：MemoryOS 的整体架构，包括记忆存储（Store）、更新（Updating）、检索（Retrieval）和响应（Response）。](.images/memory-os-ai-agent/image_1.png)
 
 受 OS 中管理的启发，我们的 MemoryOS 通过将其记忆构建成逻辑段（对话主题）细分为页面来应用这些原理。它使用基于热度的优先级来保留相关内容，高效地丢弃或归档访问较少的信息，增强上下文管理和个性化。
 
@@ -229,7 +229,7 @@ Base（ **User KB** ），动态存储从过去交互中提取和增量更新的
 
 ### 4.2 主要结果
 
-*表 2：LoCoMo 数据集上的对比结果，包括各类别得分及平均排名。A-Mem 表示原论文中报告的结果，A-Mem* 表示我们在与本文模型相同实验环境下复现得到的结果。*
+*表 2：LoCoMo 数据集上的对比结果，包括各类别得分及平均排名。A-Mem 表示原论文中报告的结果，A-Mem\* 表示我们在与本文模型相同实验环境下复现得到的结果。*
 
 <table style="border-collapse: collapse; width: 100%; text-align: center;">
   <thead>
@@ -376,10 +376,6 @@ Base（ **User KB** ），动态存储从过去交互中提取和增量更新的
   </tbody>
 </table>
 
-![图2：在 GVD 和 LoCoMo 基准数据集上的消融实验研究。](.images/memory-os-ai-agent/image_2.png)
-
-*图2：在 GVD 和 LoCoMo 基准数据集上的消融实验研究。*
-
 *表 3：在 LoCoMo 基准上的效率分析（以 LLM 调用次数和召回 token 数量进行量化）。*
 
 <table style="border-collapse: collapse; width: 100%; text-align: center;">
@@ -425,9 +421,6 @@ Base（ **User KB** ），动态存储从过去交互中提取和增量更新的
   </tbody>
 </table>
 
-![图3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。](.images/memory-os-ai-agent/image_3.png)
-*图3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。*
-
 GVD 和 LoCoMo 基准数据集的实验结果表明：
 
 （1）在所有记忆方法中，MemoryBank 表现最差。这表明简单应用记忆衰减机制不足以有效管理对话记忆。TiM 通过保存"思考"而非原始对话轮次来减轻重复推理，表现优于 MemoryBank，但其单阶段哈希检索无法保留跨话题依赖关系。
@@ -442,9 +435,17 @@ GVD 和 LoCoMo 基准数据集的实验结果表明：
 
 为评估我们框架中每个核心模块的贡献，我们通过单独移除三个关键组件进行消融研究：中期记忆（-MTM）、长期 Persona 模块（-LPM）和对话页面链（-Chain）以及整个记忆系统（-MemoryOS）。结果表明，在长对话中，记忆系统在响应质量中起着关键作用。没有 MemoryOS，模型性能大幅下降。在 MemoryOS 中，中期记忆（MTM）影响最大，其次是长期记忆（LPM），而链的影响最小。
 
+*图 2：在 GVD 和 LoCoMo 基准数据集上的消融实验研究。*
+
+![图 2：在 GVD 和 LoCoMo 基准数据集上的消融实验研究。](.images/memory-os-ai-agent/image_2.png)
+
 ### 4.4 超参数分析
 
 我们分析了从中型记忆（MTM）检索的前 $k$ 个对话页面对模型性能的影响。通过在 LoCoMo 基准上将超参数 $k$ 设置为不同值 $k \in \{5, 10, 20, 30, 40\}$，可以看到模型性能随着 $k$ 增加而提升，但超过阈值后提升减弱。检索更多页面可以提高模型性能，但过多内容可能引入噪声，对性能产生不利影响。我们设置 $k = 10$ 以在最小化计算开销的同时实现相对较好的性能。
+
+*图 3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。*
+
+![图 3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。](.images/memory-os-ai-agent/image_3.png)
 
 ### 4.5 案例研究
 
