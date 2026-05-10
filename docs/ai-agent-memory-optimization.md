@@ -1,7 +1,8 @@
 # AI Agent 记忆优化
 
 > 原文：[Optimizing Memory of AI Agents](https://github.com/FareedKhan-dev/optimize-ai-agent-memory/blob/main/README.md)
-> Jupyter Notebook：[ai-agent-memory-optimization.ipynb](../lab/ai-agent-memory-optimization.ipynb)
+> 
+> Jupyter Notebook：[在本地打开](../lab/ai-agent-memory-optimization.ipynb) | [在 GitHub 上查看](https://github.com/a981008/doc/blob/main/lab/ai-agent-memory-optimization.ipynb)
 
 优化 AI agent 的方法之一是通过多子 agent 架构来提高准确性。然而，在对话式 AI 中，优化不止于此——记忆变得更为关键。
 
