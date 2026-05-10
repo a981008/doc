@@ -380,15 +380,50 @@ Base（ **User KB** ），动态存储从过去交互中提取和增量更新的
 
 *图2：在 GVD 和 LoCoMo 基准数据集上的消融实验研究。*
 
-*表3：在 LoCoMo 基准上的效率分析（以 LLM 调用次数和召回 token 数量进行量化）。*
+*表 3：在 LoCoMo 基准上的效率分析（以 LLM 调用次数和召回 token 数量进行量化）。*
 
-| Method     | Tokens | Avg. Calls | Avg. F1 |
-| ---------- | ------ | ---------- | ------- |
-| MemoryBank | 432    | 3.0        | 6.84    |
-| TiM        | 1,274  | 2.6        | 18.01   |
-| MemGPT     | 16,977 | 4.3        | 29.13   |
-| A-Mem*     | 2,712  | 13.0       | 26.55   |
-| **Ours**       | **3,874**  | **4.9**        | **36.23**   |
+<table style="border-collapse: collapse; width: 100%; text-align: center;">
+  <thead>
+    <tr style="border-top: 3px solid black; border-bottom: 2px solid black;">
+      <th style="padding: 8px; text-align: center;">Method</th>
+      <th style="padding: 8px; text-align: center;">Tokens</th>
+      <th style="padding: 8px; text-align: center;">Avg. Calls</th>
+      <th style="padding: 8px; text-align: center;">Avg. F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 8px;">MemoryBank</td>
+      <td style="padding: 8px;">432</td>
+      <td style="padding: 8px;">3.0</td>
+      <td style="padding: 8px;">6.84</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">TiM</td>
+      <td style="padding: 8px;">1,274</td>
+      <td style="padding: 8px;">2.6</td>
+      <td style="padding: 8px;">18.01</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">MemGPT</td>
+      <td style="padding: 8px;">16,977</td>
+      <td style="padding: 8px;">4.3</td>
+      <td style="padding: 8px;">29.13</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">A-Mem*</td>
+      <td style="padding: 8px;">2,712</td>
+      <td style="padding: 8px;">13.0</td>
+      <td style="padding: 8px;">26.55</td>
+    </tr>
+    <tr style="font-weight: bold;">
+      <td style="padding: 8px;">Ours</td>
+      <td style="padding: 8px;">3,874</td>
+      <td style="padding: 8px;">4.9</td>
+      <td style="padding: 8px;">36.23</td>
+    </tr>
+  </tbody>
+</table>
 
 ![图3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。](.images/memory-os-ai-agent/image_3.png)
 *图3：超参数 k（MTM 中检索到的页面数）对 LoCoMo 基准的影响。*
@@ -409,7 +444,7 @@ GVD 和 LoCoMo 基准数据集的实验结果表明：
 
 ### 4.4 超参数分析
 
-我们分析了从中型记忆（MTM）检索的前 $k$ 个对话页面对模型性能的影响。通过在 LoCoMo 基准上将超参数 $k$ 设置为不同值 $k = \{5, 10, 20, 30, 40\}$，可以看到模型性能随着 $k$ 增加而提升，但超过阈值后提升减弱。检索更多页面可以提高模型性能，但过多内容可能引入噪声，对性能产生不利影响。我们设置 $k = 10$ 以在最小化计算开销的同时实现相对较好的性能。
+我们分析了从中型记忆（MTM）检索的前 $k$ 个对话页面对模型性能的影响。通过在 LoCoMo 基准上将超参数 $k$ 设置为不同值 $k \in \{5, 10, 20, 30, 40\}$，可以看到模型性能随着 $k$ 增加而提升，但超过阈值后提升减弱。检索更多页面可以提高模型性能，但过多内容可能引入噪声，对性能产生不利影响。我们设置 $k = 10$ 以在最小化计算开销的同时实现相对较好的性能。
 
 ### 4.5 案例研究
 

@@ -22,6 +22,9 @@ export default withMermaid(defineConfig({
   base: '/doc/',
   cleanUrls: true,
   ignoreDeadLinks: true,
+  markdown: {
+    math: true
+  },
   mermaid: {
     theme: 'default'
   },

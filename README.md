@@ -17,11 +17,11 @@ npm run preview  # 预览构建结果
 .
 ├── README.md
 ├── package.json
+├── lab/
+    └── *.ipynb
 └── docs/
     ├── index.md -> ../README.md
-    ├── ai-agent-memory-optimization.md
-    ├── everything-is-a-ralph-loop.md
-    ├── simonwillison-agents-2025.md
+    ├── *.md
     └── .vitepress/
         └── config.js
 ```
